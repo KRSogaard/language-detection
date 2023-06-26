@@ -1,58 +1,128 @@
-# Language Detection Library
 
-This is a robust .NET 7 language detection library, a port of the original [Language Detection Library for Java](https://code.google.com/p/language-detection/). With the capability of detecting languages in given texts, it boasts a precision of over 99% for 51 languages. The detection algorithm is rooted in the principles of a Naive Bayesian filter and uses language profiles generated from Wikipedia abstract xml data.
+# Language Detection
 
-This .NET version is forked from [TechnikEmpire/language-detection](https://github.com/TechnikEmpire/language-detection), and has been updated to C# 11, with all external dependencies removed.
+Detect the language of a text using naive a Bayesian filter with generated language profiles from Wikipedia abstract xml, 99% over precision for 51 languages. Original author: Nakatani Shuyo.
 
-Contributions are welcome. Feel free to send pull requests to this repo.
 
-## The Naive Bayesian Filter Explained
+.NET Port of [Language Detection Library for Java](https://code.google.com/p/language-detection/) by [@shuyo](https://github.com/shuyo)
+Forked from [TechnikEmpire/language-detection](https://github.com/TechnikEmpire/language-detection)
 
-The Naive Bayesian filter is a classification method based on Bayes' Theorem, operating under the assumption that each feature is independent. In language detection, these "features" are the frequency of certain words, characters, or n-grams (sequences of n characters) in a text.
+This package has been updated to C# 11 and .NET 7 and all external dependencies has been removed.
+Feel free to send pull requests to this repo
 
-The filter works in two main phases:
+## The Naive Bayesian filter
+The Naive Bayesian filter, which is a classification method based on Bayes' Theorem, works on the principle of considering each feature to be independent of one another. In the context of language detection, these "features" could be the frequency of certain words, characters, or n-grams (sequences of n characters) in a text.
 
-- **Training Phase:** The filter uses labeled training data (Wikipedia abstract XML data for each language) to compute the prior probability of each class (language) and the conditional probability of each feature given each class. These calculations reflect the likelihood of a class in the training set and the likelihood of a feature occurring in instances of that class, respectively.
+Here's a high-level overview of how it works:
 
-- **Prediction Phase:** To detect the language of a new, unlabeled text, the filter transforms the text into a feature vector and applies Bayes' Theorem to calculate the posterior probability of each class given this vector. The class (language) with the highest posterior probability becomes the prediction.
+Training Phase: During training, the filter uses a set of labeled training data (in this case, the Wikipedia abstract XML data for each language) to calculate the prior probability of each class (language) and the conditional probability of each feature (word, character, or n-gram) given each class. The prior probability of a class is the overall likelihood of that class in the training set, while the conditional probability of a feature given a class is the likelihood of that feature occurring in instances of that class.
 
-Though the "naive" assumption—that every feature is independent—may not strictly hold, the Naive Bayesian filter performs well due to its capacity to handle numerous features and its robustness to irrelevant features.
+Prediction Phase: To predict the class of a new, unlabeled instance (in this case, a piece of text whose language we want to detect), the filter first transforms the instance into a feature vector. It then applies Bayes' Theorem to calculate the posterior probability of each class given this feature vector. The class with the highest posterior probability is chosen as the prediction.
 
-Please note, the precision of the filter depends heavily on the quality and representativeness of the training data. This library uses language profiles from Wikipedia abstract XML data, ensuring a broad and diverse sample of language use.
+In the context of this Language Detector, the "naive" assumption of the Naive Bayesian filter—that every feature is independent of every other feature—is not strictly true, as words and characters in a language are often dependent on each other. However, despite this assumption, the Naive Bayesian filter often performs well in practice and is particularly effective for language detection due to its ability to handle many features and its robustness to irrelevant features.
 
-## Installation
+It's important to note that the accuracy of the Naive Bayesian filter heavily depends on the quality and representativeness of the training data. The language profiles generated from Wikipedia abstract XML data provide a broad and diverse sample of language use, contributing to the high precision of this Language Detector.
 
-To install, simply add a reference to `LanguageDetection.dll` in your project.
+## Supported Languages
 
-## Usage
+This library provides language detection support for the following languages:
 
-Import the Language Detection library:
+| Language    | ISO 639-2/T Code |
+|-------------|-----------------|
+| Afrikaans   | afr             |
+| Arabic      | ara             |
+| Bengali     | ben             |
+| Bulgarian   | bul             |
+| Czech       | ces             |
+| Danish      | dan             |
+| German      | deu             |
+| Greek       | ell             |
+| English     | eng             |
+| Estonian    | est             |
+| Persian     | fas             |
+| Finnish     | fin             |
+| French      | fra             |
+| Gujarati    | guj             |
+| Hebrew      | heb             |
+| Hindi       | hin             |
+| Croatian    | hrv             |
+| Hungarian   | hun             |
+| Indonesian  | ind             |
+| Italian     | ita             |
+| Japanese    | jpn             |
+| Kannada     | kan             |
+| Korean      | kor             |
+| Latvian     | lav             |
+| Lithuanian  | lit             |
+| Malayalam   | mal             |
+| Marathi     | mar             |
+| Macedonian  | mkd             |
+| Nepali      | nep             |
+| Dutch       | nld             |
+| Norwegian   | nor             |
+| Punjabi     | pan             |
+| Polish      | pol             |
+| Portuguese  | por             |
+| Romanian    | ron             |
+| Russian     | rus             |
+| Slovak      | slk             |
+| Slovenian   | slv             |
+| Somali      | som             |
+| Spanish     | spa             |
+| Albanian    | sqi             |
+| Swahili     | swa             |
+| Swedish     | swe             |
+| Tamil       | tam             |
+| Telugu      | tel             |
+| Tagalog     | tgl             |
+| Thai        | tha             |
+| Turkish     | tur             |
+| Twi         | twi             |
+| Ukrainian   | ukr             |
+| Urdu        | urd             |
+| Vietnamese  | vie             |
+| Chinese     | zho             |
+
+These language codes follow the ISO 639-2/T standard. Make sure to use the correct language code when invoking the language detection methods.
+
+
+## Install
+
+```bash
+dotnet add package LanguageDetection.Ai
+```
+
+## Use
+
 ```csharp
 using LanguageDetection;
 ```
-
-To load all supported languages:
+    
+Load all supported languages
+    
 ```csharp
 LanguageDetector detector = new LanguageDetector();
 detector.AddAllLanguages();
 Assert.Equal("dan", detector.Detect("Denne tekst er skrevet i dansk"));
 ```
+    
+or a small subset
 
-Or load a small subset of languages:
 ```csharp
 LanguageDetector detector = new LanguageDetector();
 detector.AddLanguages("dan", "eng", "swe");
 Assert.Equal("dan", detector.Detect("Denne tekst er skrevet i dansk"));
 ```
 
-It's also possible to modify certain parameters:
+You can also change parameters
+
 ```csharp
 LanguageDetector detector = new LanguageDetector();
 detector.RandomSeed = 1;
 detector.ConvergenceThreshold = 0.9;
 detector.MaxIterations = 50;
 ```
-
+    
 ## License
 
-This library is licensed under Apache 2.0.
+Apache 2.0
