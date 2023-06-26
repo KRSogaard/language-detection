@@ -1,0 +1,35 @@
+name: Build, test and deploy to NuGet
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '7.x' # adjust to your needed .NET version
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore --configuration Release
+
+      - name: Test
+        run: dotnet test --no-build --verbosity normal 
+
+      - name: Publish
+        run: dotnet publish LanguageDetection/LanguageDetection.csproj --no-build --configuration Release --output ./output
+
+      - name: Pack
+        run: dotnet pack LanguageDetection/LanguageDetection.csproj --no-build --configuration Release --output ./output
+
+      - name: Push to NuGet Gallery
+        run: dotnet nuget push ./output/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
