@@ -1,4 +1,5 @@
 name: Build, test and deploy to NuGet
+concurrency: nuget-deploy
 
 on:
   push:
