@@ -10,6 +10,9 @@ Forked from [TechnikEmpire/language-detection](https://github.com/TechnikEmpire/
 This package has been updated to C# 11 and .NET 7 and all external dependencies has been removed.
 The execution has also been optimized a bit to use threads and other improvements.
 The algorithm is now detecting languages with all 51 languages added in `0.5 ms` down from `1.12 ms`.
+
+The LanguageDetector is now threadsafe and you can create a singleton instance of it that can be reused thoughout your application
+
 Feel free to send pull requests to this repo
 
 ## The Naive Bayesian filter
@@ -135,10 +138,12 @@ Assert.Equal("dan", detector.Detect("Denne tekst er skrevet i dansk"));
 You can also change parameters
 
 ```csharp
+LanguageDetectorSettings settings = new LanguageDetectorSettings() {
+    RandomSeed = 1,
+    ConvergenceThreshold = 0.9,
+    MaxIterations = 50,
+};
 LanguageDetector detector = new LanguageDetector();
-detector.RandomSeed = 1;
-detector.ConvergenceThreshold = 0.9;
-detector.MaxIterations = 50;
 ```
 
 ## License

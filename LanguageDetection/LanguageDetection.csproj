@@ -4,18 +4,18 @@
         <TargetFramework>net7.0</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <Version>1.0.4</Version>
+        <Version>1.0.5</Version>
         <PackageId>LanguageDetection.Ai</PackageId>
-        <Authors>Kasper Rune Sogaard, Pēteris Ņikiforovs</Authors>
+        <Authors>Kasper Rune Sogaard, Pēteris Ņikiforovs, Nakatani Shuyo</Authors>
         <Summary>Detect the language of a text using naive a Bayesian filter with generated language profiles from Wikipedia abstract xml, 99% over precision for 53 languages. Original author: Nakatani Shuyo.</Summary>
-        <Description>Detect the language of a text using naive a Bayesian filter with generated language profiles from Wikipedia abstract xml, 99% over precision for 53 languages. Original author: Nakatani Shuyo.</Description>
+        <Description>Detect the language of a text using naive a Bayesian filter with generated language profiles from Wikipedia abstract xml, 99% over precision for 51 languages.</Description>
         <Copyright>Do what you want</Copyright>
         <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</PackageLicenseUrl>
         <PackageProjectUrl>https://github.com/KRSogaard/language-detection</PackageProjectUrl>
         <RepositoryUrl>https://github.com/KRSogaard/language-detection</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>nlp, language-identification, language-guessing, language-detection, language-detecting, language-detector</PackageTags>
-        <PackageReleaseNotes>Convert all language pack codes to use 3 character ISO 639-3 codes.</PackageReleaseNotes>
+        <PackageReleaseNotes>This release delivers a significant speed enhancement of approximately 67%, reducing processing time from 1.4ms to 0.46ms for large multilingual texts. Improvements include thread-safe LanguageDetector, internal threading optimization, and comprehensive code reorganization.</PackageReleaseNotes>
         <LangVersion>default</LangVersion>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>

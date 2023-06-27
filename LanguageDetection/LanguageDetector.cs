@@ -11,7 +11,7 @@ using LanguageDetection.Utils;
 
 namespace LanguageDetection;
 
-public class LanguageDetector
+public class LanguageDetector : ILanguageDetector
 {
     private const string ResourceNamePrefix = "LanguageDetection.Profiles.";
 
