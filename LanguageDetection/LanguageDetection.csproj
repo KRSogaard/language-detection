@@ -4,7 +4,7 @@
         <TargetFramework>net7.0</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <Version>1.0.3</Version>
+        <Version>1.0.4</Version>
         <PackageId>LanguageDetection.Ai</PackageId>
         <Authors>Kasper Rune Sogaard, Pēteris Ņikiforovs</Authors>
         <Summary>Detect the language of a text using naive a Bayesian filter with generated language profiles from Wikipedia abstract xml, 99% over precision for 53 languages. Original author: Nakatani Shuyo.</Summary>
