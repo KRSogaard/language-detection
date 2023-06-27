@@ -1,18 +1,28 @@
 namespace LanguageDetection.Tests_new;
 
 /// <summary>
-/// Translations made by ChatGPT
+///     Translations made by ChatGPT
 /// </summary>
 public class LanguageDetectorLanguageTests
 {
-    private void RunTest(string language, string test) {
-        var detector = new LanguageDetector();
+    private void RunTest(string language, string test)
+    {
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
+        int guesses = 100;
+        int correctGuesses = 0;
+        string detectedLanguage;
+        
         for (int i = 0; i < 100; i++) {
-            Assert.Equal(language, detector.Detect(test));
-        }
+            detectedLanguage = detector.Detect(test);
+            if (language == detectedLanguage)
+            {
+                correctGuesses++;
+            }
+        };
+        Assert.Equal(guesses, correctGuesses);
     }
-    
+
     [Fact]
     public void TestAfrikaans() // Good morning, how are you?
     {
@@ -22,7 +32,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestArabic() // Hello, what's your name?
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("ara", "مرحبا، ما اسمك؟");
     }
@@ -30,15 +40,16 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestBengali() // I am very happy today.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("ben", "আমি আজ খুব খুশি।");
     }
 
     [Fact]
-    public void TestBulgarian() // Today the sun is shining brightly, I am enjoying the beautiful nature and the fresh air.
+    public void
+        TestBulgarian() // Today the sun is shining brightly, I am enjoying the beautiful nature and the fresh air.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("bul", "Днес слънцето грее ярко, аз се наслаждавам на прекрасната природа и свежия въздух.");
     }
@@ -46,23 +57,23 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestCzech() // Where is the nearest station?
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("ces", "Kde je nejbližší stanice?");
     }
 
     [Fact]
-    public void TestDanish() // I am learning a new language.
+    public void TestDanish() // I am learning a new language, that is good to use in Copenhagen
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
-        RunTest("dan", "Jeg lærer et nyt sprog.");
+        RunTest("dan", "Jeg lærer et nyt sprog, der er godt at bruge i København.");
     }
 
     [Fact]
     public void TestGerman() // My favorite food is pizza.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("deu", "Mein Lieblingsessen ist Pizza.");
     }
@@ -70,7 +81,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestGreek() // I love reading books.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("ell", "Μου αρέσει να διαβάζω βιβλία.");
     }
@@ -78,7 +89,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestEnglish() // This is an English phrase.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("eng", "This is an English phrase.");
     }
@@ -86,7 +97,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestEstonian() // It is a beautiful day.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("est", "See on ilus päev.");
     }
@@ -94,7 +105,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestPersian() // The sky is blue.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("fas", "آسمان آبی است.");
     }
@@ -102,7 +113,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestFinnish() // My cat is small.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("fin", "Kissaani on pieni.");
     }
@@ -110,7 +121,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestFrench() // The black cat walks silently in the garden at night.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("fra", "Le chat noir se promène silencieusement dans le jardin la nuit.");
     }
@@ -118,7 +129,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestGujarati() // I have two brothers.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("guj", "મારી પાસે બે ભાઈ છે.");
     }
@@ -126,7 +137,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestHebrew() // I live in Jerusalem.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("heb", "אני גר בירושלים.");
     }
@@ -134,7 +145,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestHindi() // My name is John.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("hin", "मेरा नाम जॉन है।");
     }
@@ -142,7 +153,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestCroatian() // This is a beautiful city.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("hrv", "Ovo je prekrasan grad.");
     }
@@ -150,7 +161,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestHungarian() // I am eating an apple.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("hun", "Almát eszek.");
     }
@@ -158,7 +169,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestIndonesian() // I love to travel.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("ind", "Saya suka bepergian.");
     }
@@ -166,7 +177,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestItalian() // The sea is very beautiful.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("ita", "Il mare è molto bello.");
     }
@@ -174,7 +185,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestJapanese() // Nice to meet you.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("jpn", "はじめまして。");
     }
@@ -182,7 +193,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestKannada() // I study every day.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("kan", "ನಾನು ಪ್ರತಿ ದಿನ ಅಧ್ಯಯನ ಮಾಡುತ್ತೇನೆ.");
     }
@@ -190,7 +201,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestKorean() // I like coffee.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("kor", "나는 커피를 좋아합니다.");
     }
@@ -198,7 +209,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestLatvian() // Spring is coming.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("lav", "Pavasaris nāk.");
     }
@@ -206,7 +217,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestLithuanian() // It's a sunny day.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("lit", "Tai saulėtas diena.");
     }
@@ -214,7 +225,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestMalayalam() // Rain is beautiful.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("mal", "മഴ സുന്ദരമാണ്.");
     }
@@ -222,7 +233,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestMarathi() // I am learning Marathi.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("mar", "माझे मराठी शिकत आहे.");
     }
@@ -230,7 +241,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestMacedonian() // This is a good book.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("mkd", "Ова е добра книга.");
     }
@@ -238,7 +249,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestNepali() // I am a student.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("nep", "म विद्यार्थी हुँ।");
     }
@@ -246,7 +257,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestDutch() // I have a dog.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("nld", "Ik heb een hond.");
     }
@@ -254,7 +265,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestNorwegian() // I like to play football.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("nor", "Jeg liker å spille fotball.");
     }
@@ -262,7 +273,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestPunjabi() // My mother is a teacher.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("pan", "ਮੇਰੀ ਮਾਂ ਇੱਕ ਅਧਿਆਪਕ ਹੈ।");
     }
@@ -270,7 +281,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestPolish() // I love to cook.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("pol", "Uwielbiam gotować.");
     }
@@ -278,7 +289,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestPortuguese() // The beach is beautiful.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("por", "A praia é linda.");
     }
@@ -286,7 +297,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestRomanian() // It's a warm day.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("ron", "Este o zi caldă.");
     }
@@ -294,15 +305,16 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestRussian() // My friend lives in Moscow.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("rus", "Мой друг живет в Москве.");
     }
 
     [Fact]
-    public void TestSlovak() // The weather today is beautiful, the sun is shining, and the sky is clear, an ideal day for a walk in nature.
+    public void
+        TestSlovak() // The weather today is beautiful, the sun is shining, and the sky is clear, an ideal day for a walk in nature.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("slk", "Počasie dnes je krásne, slnko svieti a obloha je jasná, ideálny deň na prechádzku v prírode.");
     }
@@ -310,7 +322,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestSlovenian() // I am from Slovenia.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("slv", "Sem iz Slovenije.");
     }
@@ -318,7 +330,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestSomali() // I have three children.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("som", "Waxaan leeyahay saddex carruur.");
     }
@@ -326,7 +338,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestSpanish() // I love reading books.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("spa", "Me encanta leer libros.");
     }
@@ -334,7 +346,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestAlbanian() // This is a new car.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("sqi", "Ky është një makinë e re.");
     }
@@ -342,7 +354,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestSwedish() // The food is delicious.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("swe", "Maten är läcker.");
     }
@@ -350,7 +362,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestTamil() // I like to write.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("tam", "எனக்கு எழுதுவது பிடிக்கும்.");
     }
@@ -358,7 +370,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestTelugu() // I am going home.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("tel", "నేను ఇంటికి వెళ్తున్నాను.");
     }
@@ -366,7 +378,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestTagalog() // I am from the Philippines.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("tgl", "Galing ako sa Pilipinas.");
     }
@@ -374,7 +386,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestThai() // I am a teacher.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("tha", "ฉันเป็นครู");
     }
@@ -382,7 +394,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestTurkish() // I love Istanbul.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("tur", "İstanbul'u seviyorum.");
     }
@@ -390,7 +402,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestUkrainian() // The snow is white.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("ukr", "Сніг білий.");
     }
@@ -398,7 +410,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestUrdu() // I am studying.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("urd", "میں پڑھ رہا ہوں۔");
     }
@@ -406,7 +418,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestVietnamese() // Today is Sunday.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("vie", "Hôm nay là Chủ Nhật.");
     }
@@ -414,7 +426,7 @@ public class LanguageDetectorLanguageTests
     [Fact]
     public void TestChinese() // I like tea.
     {
-        var detector = new LanguageDetector();
+        LanguageDetector detector = new LanguageDetector();
         detector.AddAllLanguages();
         RunTest("zho", "我喜欢喝茶。");
     }
