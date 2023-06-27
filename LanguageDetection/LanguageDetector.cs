@@ -1,19 +1,4 @@
-﻿// Copyright 2014 Pēteris Ņikiforovs
-// Copyright 2014 Nakatani Shuyo
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
@@ -21,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.Json;
 using System.Threading.Tasks;
+using LanguageDetection.Models;
 using LanguageDetection.Utils;
 
 namespace LanguageDetection;
@@ -155,7 +141,8 @@ public class LanguageDetector
             throw new ArgumentException("Input text cannot be null, empty or consist only of whitespace.");
         }
 
-        List<string> ngrams = NGram.ExtractNGrams(TextNormalization.NormalizeText(text, settings), settings.MaxTextLength, wordLanguageProbabilities);
+        List<string> ngrams = NGram.ExtractNGrams(TextNormalization.NormalizeText(text, settings),
+            settings.MaxTextLength, wordLanguageProbabilities);
         if (ngrams.Count == 0)
         {
             return new DetectedLanguage[0];
@@ -166,7 +153,7 @@ public class LanguageDetector
         Parallel.For(0, settings.Trials, t =>
         {
             Random random = settings.RandomSeed != null ? new Random(settings.RandomSeed.Value) : new Random();
-            
+
             double[] probs = ProbabilitiesUtils.InitializeProbabilities(languages.Count());
             double alpha = settings.Alpha + random.NextDouble() * settings.AlphaWidth;
 

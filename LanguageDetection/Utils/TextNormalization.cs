@@ -3,6 +3,9 @@ using System.Text.RegularExpressions;
 
 namespace LanguageDetection.Utils;
 
+/// <summary>
+/// Provides text normalization methods for language detection.
+/// </summary>
 public static class TextNormalization
 {
     private static readonly Regex
@@ -11,6 +14,12 @@ public static class TextNormalization
     private static readonly Regex EmailRegex =
         new Regex("[-_.0-9A-Za-z]{1,64}@[-_0-9A-Za-z]{1,255}[-_.0-9A-Za-z]{1,255}", RegexOptions.Compiled);
 
+    /// <summary>
+    /// Normalizes the given text based on the specified language detection settings.
+    /// </summary>
+    /// <param name="text">The text to be normalized.</param>
+    /// <param name="settings">The language detector settings.</param>
+    /// <returns>The normalized text.</returns>
     public static string NormalizeText(string text, LanguageDetectorSettings settings)
     {
         if (text.Length > settings.MaxTextLength)
@@ -25,6 +34,11 @@ public static class TextNormalization
         return text;
     }
 
+    /// <summary>
+    /// Normalizes the alphabet of the given text by removing non-Latin characters if they dominate the text.
+    /// </summary>
+    /// <param name="text">The text to normalize.</param>
+    /// <returns>The normalized text.</returns>
     private static string NormalizeAlphabet(string text)
     {
         int latinCount = 0;
@@ -62,6 +76,11 @@ public static class TextNormalization
         return text;
     }
 
+    /// <summary>
+    /// Normalizes the whitespace in the given text by removing consecutive spaces.
+    /// </summary>
+    /// <param name="text">The text to normalize.</param>
+    /// <returns>The normalized text.</returns>
     private static string NormalizeWhitespace(string text)
     {
         StringBuilder sb = new StringBuilder(text.Length);
@@ -81,6 +100,11 @@ public static class TextNormalization
         return sb.ToString();
     }
 
+    /// <summary>
+    /// Removes URL addresses and email addresses from the given text.
+    /// </summary>
+    /// <param name="text">The text to remove addresses from.</param>
+    /// <returns>The text with addresses removed.</returns>
     private static string RemoveAddresses(string text)
     {
         text = UrlRegex.Replace(text, " ");

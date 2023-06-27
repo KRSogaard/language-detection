@@ -1,20 +1,21 @@
 using System.Collections.Generic;
 using System.Text;
+using LanguageDetection.Models;
 
 namespace LanguageDetection;
 
 /// <summary>
-/// Represents an N-gram model for extracting contiguous sequences of characters from text.
+///     Represents an N-gram model for extracting contiguous sequences of characters from text.
 /// </summary>
 /// <remarks>
-/// An N-gram is a contiguous sequence of N items (characters in this case) within a given text.
-/// The NGram class provides methods to add characters to the N-gram buffer and retrieve N-grams
-/// of a specified length from the buffer.
+///     An N-gram is a contiguous sequence of N items (characters in this case) within a given text.
+///     The NGram class provides methods to add characters to the N-gram buffer and retrieve N-grams
+///     of a specified length from the buffer.
 /// </remarks>
 public class NGram
 {
     /// <summary>
-    /// The default value for N-gram length.
+    ///     The default value for N-gram length.
     /// </summary>
     public const int N_GRAM = 3;
 
@@ -22,7 +23,7 @@ public class NGram
     private bool capital;
 
     /// <summary>
-    /// Adds a character to the N-gram buffer.
+    ///     Adds a character to the N-gram buffer.
     /// </summary>
     /// <param name="c">The character to add.</param>
     public void Add(char c)
@@ -59,7 +60,7 @@ public class NGram
     }
 
     /// <summary>
-    /// Gets the N-gram of the specified length from the buffer.
+    ///     Gets the N-gram of the specified length from the buffer.
     /// </summary>
     /// <param name="n">The length of the N-gram.</param>
     /// <returns>The N-gram string or null if it cannot be obtained.</returns>
@@ -90,7 +91,7 @@ public class NGram
     }
 
     /// <summary>
-    /// Extracts N-grams from the given text based on the N-gram model and word probabilities.
+    ///     Extracts N-grams from the given text based on the N-gram model and word probabilities.
     /// </summary>
     /// <param name="text">The text to extract N-grams from.</param>
     /// <param name="MaxTextLength">The maximum length of the text.</param>

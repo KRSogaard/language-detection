@@ -8,8 +8,8 @@ by [@shuyo](https://github.com/shuyo)
 Forked from [TechnikEmpire/language-detection](https://github.com/TechnikEmpire/language-detection)
 
 This package has been updated to C# 11 and .NET 7 and all external dependencies has been removed.
-The execution has also been optimized a bit to use threads and other improvements. 
-The algorithm is now detecting languages with all 51 languages added in `0.45 ms` down from `1.12 ms`.
+The execution has also been optimized a bit to use threads and other improvements.
+The algorithm is now detecting languages with all 51 languages added in `0.5 ms` down from `1.12 ms`.
 Feel free to send pull requests to this repo
 
 ## The Naive Bayesian filter

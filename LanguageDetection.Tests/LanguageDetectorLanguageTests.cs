@@ -12,14 +12,17 @@ public class LanguageDetectorLanguageTests
         int guesses = 100;
         int correctGuesses = 0;
         string detectedLanguage;
-        
-        for (int i = 0; i < 100; i++) {
+
+        for (int i = 0; i < 100; i++)
+        {
             detectedLanguage = detector.Detect(test);
             if (language == detectedLanguage)
             {
                 correctGuesses++;
             }
-        };
+        }
+
+        ;
         Assert.Equal(guesses, correctGuesses);
     }
 

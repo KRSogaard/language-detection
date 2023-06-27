@@ -1,3 +1,5 @@
+using LanguageDetection.Models;
+
 namespace LanguageDetection.Tests_new;
 
 public class LanguageDetectorTests

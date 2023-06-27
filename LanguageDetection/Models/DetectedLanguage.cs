@@ -1,4 +1,4 @@
-namespace LanguageDetection;
+namespace LanguageDetection.Models;
 
 public class DetectedLanguage
 {
