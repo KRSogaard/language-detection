@@ -14,7 +14,7 @@
         <PackageProjectUrl>https://github.com/KRSogaard/language-detection</PackageProjectUrl>
         <RepositoryUrl>https://github.com/KRSogaard/language-detection</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageTags>nlp, language identification, language guessing, language detection, language detecting, language detector</PackageTags>
+        <PackageTags>nlp, language-identification, language-guessing, language-detection, language-detecting, language-detector</PackageTags>
         <PackageReleaseNotes>Convert all language pack codes to use 3 character ISO 639-3 codes.</PackageReleaseNotes>
         <LangVersion>default</LangVersion>
     </PropertyGroup>
