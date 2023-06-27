@@ -23,13 +23,13 @@ jobs:
         run: dotnet build --no-restore --configuration Release
 
       - name: Test
-        run: dotnet test --no-build --verbosity detailed 
+        run: dotnet test --verbosity detailed 
 
       - name: Publish
-        run: dotnet publish LanguageDetection/LanguageDetection.csproj --no-build --configuration Release --output ./output
+        run: dotnet publish LanguageDetection/LanguageDetection.csproj --configuration Release --output ./output
 
       - name: Pack
-        run: dotnet pack LanguageDetection/LanguageDetection.csproj --no-build --configuration Release --output ./output
+        run: dotnet pack LanguageDetection/LanguageDetection.csproj --configuration Release --output ./output
 
       - name: Push to NuGet Gallery
         run: dotnet nuget push ./output/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
