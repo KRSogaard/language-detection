@@ -24,7 +24,7 @@ jobs:
         run: dotnet build --no-restore --configuration Release
 
       - name: Test
-        run: dotnet test --verbosity detailed 
+        run: dotnet test --verbosity n 
 
       - name: Publish
         run: dotnet publish LanguageDetection/LanguageDetection.csproj --configuration Release --output ./output

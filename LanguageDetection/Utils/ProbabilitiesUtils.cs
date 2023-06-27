@@ -101,11 +101,6 @@ public static class ProbabilitiesUtils
 
         for (int j = 0; j < probs.Count; j++)
         {
-            if (languages[j].Code == "dan")
-            {
-                Console.WriteLine("Here");
-            }
-
             double p = probs[j];
 
             if (p > ProbabilityThreshold)
