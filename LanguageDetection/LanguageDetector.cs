@@ -112,7 +112,7 @@ public class LanguageDetector : ILanguageDetector
     /// </summary>
     /// <param name="text">The text to detect the language of. If longer than MaxTextLength, it will be trimmed.</param>
     /// <returns>The code of the most probable language, or null if no language could be reliably detected.</returns>
-    public string Detect(string text)
+    public string? Detect(string text)
     {
         DetectedLanguage language = DetectAll(text).FirstOrDefault();
         return language != null ? language.Language : null;
